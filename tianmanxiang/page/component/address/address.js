@@ -38,16 +38,16 @@ Page({
                 "Content-Type": "application/json"
               },
               url: 
-'https://www.cmapi.ca/rtt_miniprogram/prod/index.php/api/hazelway/v1/updateUserInfo',
+'https://www.cmapi.ca/cm_miniprogram/dev/public/index.php/api/sboxmanage/v1/updateUserInfo',
               method: 'POST',
               data: {
                 code: res.code,
-                nickname: value.name,
+                name: value.name,
                 telephone: value.phone,
                 address: value.detail
               },
               success: function (res) {
-
+                
               },
               fail: function (res) {
 

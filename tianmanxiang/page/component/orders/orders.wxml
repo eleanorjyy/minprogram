@@ -10,11 +10,11 @@
               </view>
             </view>
             <view class="orders-address-container">
-              <text class="orders-address-name">{{address.name}}
+              <text class="orders-address-name">名字 {{address.name}}
               </text>
-              <text class="orders-address-phone">{{address.phone}}
+              <text class="orders-address-phone">电话 {{address.phone}}
               </text>
-              <view class="orders-address-detail">{{address.detail}}
+              <view class="orders-address-detail">地址 {{address.detail}}
               </view>
             </view>
         </view>
@@ -33,7 +33,7 @@
     <view class="orders-box">
         <view wx:for="{{orders}}" wx:key="index" class="orders-list">
             <image class="orders-thumb" src="{{item.image}}"></image>
-            <view class="orders-pro-name">{{item.title}}</view>
+            <view class="orders-pro-name">{{item.name}}</view>
             <view class="orders-count-num">×{{item.num}}</view>
             <view class="orders-pro-price">$ {{item.price}}</view>
         </view>

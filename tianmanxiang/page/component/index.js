@@ -103,7 +103,6 @@ Page({
         //console.log(res.code);
         
         app.globalData.openid = res.code;
-        console.log(app.globalData.openid);
         
         if (res.code) {
 
@@ -119,10 +118,12 @@ Page({
             success: function (res) {
               
               if(res.data.ev_has_info) {
+                console.log(res.data.ev_user_info.original.user[0]);
+                var user = res.data.ev_user_info.original.user[0];
                 let address_data = {
-                  detail: res.data.ev_user_info.address,
-                  name: res.data.ev_user_info.nickname,
-                  phone: res.data.ev_user_info.telephone,
+                  detail: user.address,
+                  name: user.name,
+                  phone: user.telephone,
                 }
                 wx.setStorage({
                   key: 'address',

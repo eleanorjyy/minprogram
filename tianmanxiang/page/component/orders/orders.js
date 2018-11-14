@@ -32,7 +32,7 @@ Page({
   },
   onReady() {
     
-    this.getTotalPrice();
+    // this.getTotalPrice();
     // this.getCode();
     
   },
@@ -63,20 +63,22 @@ Page({
       },
       success: function (res) {
 
-
+        console.log(res.data.total);
         self.setData({
-          orders: res.data.data,
+          orders: app.globalData.carts,
           total: res.data.total, 
           pretax: res.data.pretax,
           tax: res.data.tax,
           shipping_fee: res.data.shipping_fee
         });
-        self.getTotalPrice();
+        // self.getTotalPrice();
       },
       fail: function (res) {
 
       }
     })
+
+
 
     // this.setData({
     //   orders: app.globalData.carts
@@ -84,6 +86,7 @@ Page({
     wx.getStorage({
       key:'address',
       success(res) {
+        console.log(res.data);
         self.setData({
           address: res.data,
           hasAddress: true
@@ -95,16 +98,17 @@ Page({
   /**
    * 计算总价
    */
-  getTotalPrice() {
-    let orders = this.data.orders;
-    let total = 0;
-    for(let i = 0; i < orders.length; i++) {
-      total += orders[i].num * orders[i].price;
-    }
-    this.setData({
-      total: total
-    })
-  },
+  // getTotalPrice() {
+  //   let orders = this.data.orders;
+
+  //   let total = 0;
+  //   for(let i = 0; i < orders.length; i++) {
+  //     total += orders[i].num * orders[i].price;
+  //   }
+  //   this.setData({
+  //     total: total
+  //   })
+  // },
   createNonceStr: function () {
     return Math.random().toString(36).substr(2, 15)
   },
@@ -114,12 +118,15 @@ Page({
 
   
   callPayRequest(res){
-
+    console.log(res.data);
+    const self = this;
+    var time = self.createTimeStamp();
+    var noncsstr = self.createNonceStr();
     wx.requestPayment(
       {
-        'timeStamp': res.data.timeStamp.toString(),
-        'nonceStr': res.data.nonceStr,
-        'package': res.data.package,
+        'timeStamp':time,
+        'nonceStr': noncsstr,
+        // 'package': res.data.package,
         'signType': 'MD5',
         'paySign': res.data.paySign,
         'success': function (res) {
@@ -175,7 +182,7 @@ Page({
               "Content-Type": "application/json"
             },
             url: 
-'https://www.cmapi.ca/rtt_miniprogram/prod/index.php/api/hazelway/v1/smallAppLoginCheck',
+'https://www.cmapi.ca/cm_miniprogram/dev/public/index.php/api/sboxmanage/v1/smallAppLoginCheck',
             method: 'POST',
             data: {
               code: res.code,

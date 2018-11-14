@@ -76,7 +76,10 @@ swiper-item image {
   flex-wrap: nowrap;
 }
 
-.boxName{
+.boxInfo{
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-row-gap: 10rpx;
   padding: 50rpx;
   color:#FF7685;
   font-weight: bold;
@@ -130,7 +133,7 @@ swiper-item image {
 .hot-product-text{
   
   padding: 0 40rpx;
-  font-size: 20rpx;
+  font-size: 30rpx;
   
 }
 

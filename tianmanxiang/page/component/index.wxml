@@ -18,6 +18,7 @@
           duration="{{duration}}" 
           circular="true">
     <block wx:for="{{boxes}}" wx:key="boxes">
+      <navigator url="BoxDetail/BoxDetail?boxid={{item.bid}}">
         <swiper-item>
             <image src="{{item.image}}" 
                     data-id="{{item.bid}}"
@@ -26,6 +27,7 @@
                     class="slide-image" 
                     width="100%"></image>
         </swiper-item>
+      </navigator>
     </block>
   </swiper>
   
@@ -49,8 +51,9 @@
                   </image>
                 </navigator>
               </view>
-              <view class="boxName">
+              <view class="boxInfo">
                 <text>{{item.name}}</text>
+                <text>{{item.price}}</text>
               </view>
               <!-- <view class="hot-image-text">
                 <text>{{item.cate}}</text>
@@ -78,9 +81,9 @@
                         <image src="{{product.image}}">
                         </image>
                       </view>
-                      <view class="hot-product-price">
+                      <!-- <view class="hot-product-price">
                         <text>${{product.price}}</text>
-                      </view>
+                      </view> -->
                       <view class="hot-product-text">
                         <text>{{product.name}}</text>
                       </view>

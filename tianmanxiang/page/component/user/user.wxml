@@ -43,9 +43,9 @@
         </view>
         <view wx:if="{{hasAddress}}" 
               class="address-list">
-            <view>{{address.name}}</view>
-            <view>{{address.phone}}</view>
-            <view>{{address.detail}}</view>
+            <view><text>名字</text> {{address.name}}</view>
+            <view><text>电话</text> {{address.phone}}</view>
+            <view><text>地址</text> {{address.detail}}</view>
         </view>
     </view>
     

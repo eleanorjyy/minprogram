@@ -2,7 +2,7 @@
 Page({
   data:{
     thumb:'',
-    nickname:'',
+    name:'',
     orders:[],
     hasAddress:false,
     address:{}
@@ -16,7 +16,7 @@ Page({
       success: function(res){
         self.setData({
           thumb: res.userInfo.avatarUrl,
-          nickname: res.userInfo.nickName
+          name: res.userInfo.name
         })
       }
     }),
