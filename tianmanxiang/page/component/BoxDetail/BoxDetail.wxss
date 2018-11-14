@@ -107,7 +107,7 @@
     height: 40rpx;
     line-height: 40rpx;
     border-radius: 50%;
-    background: #AB956D;
+    background: #FF7685;
     color: #fff;
     font-size: 24rpx;
 }
@@ -120,7 +120,7 @@
     margin-bottom: 60rpx;
     box-sizing: border-box;
     border-radius: 50rpx;
-    background: #AB956D;
+    background: #FF7685;
     color: #fff;
     font-size: 28rpx;
 }

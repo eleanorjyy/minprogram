@@ -78,6 +78,8 @@ swiper-item image {
 
 .boxName{
   padding: 50rpx;
+  color:#FF7685;
+  font-weight: bold;
 }
 .hot-image-logo>image{
   padding-top: 30rpx;

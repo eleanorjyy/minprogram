@@ -16,7 +16,7 @@
                       data-index="{{index}}" 
                       bindtap="selectList"/>
                       
-                <navigator url="../details/details?id={{item.id}}">
+                <navigator url="../BoxDetail/BoxDetail?id={{item.id}}">
                   <image class="cart-thumb" 
                          src="{{item.image}}">
                   </image>
