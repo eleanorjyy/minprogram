@@ -1,0 +1,96 @@
+<view class="main">
+
+  <!-- Company Logo  -->
+  <view class="company-logo">
+    <image src="../../image/hazelway-logo.png" 
+           align="middle">
+    </image>
+  </view>
+
+  <!-- Slogan  -->
+  <view class="sub-title"><text>甜满箱</text></view>
+
+  <!-- Swiper -->  
+  <!-- box image in swiper -->
+  <swiper indicator-dots="true" 
+          autoplay="true" 
+          interval="{{interval}}" 
+          duration="{{duration}}" 
+          circular="true">
+    <block wx:for="{{boxes}}" wx:key="boxes">
+        <swiper-item>
+            <image src="{{item.image}}" 
+                    data-id="{{item.bid}}"
+                    data-cate="{{item.cate}}"  
+                    bindtap="toCategory" 
+                    class="slide-image" 
+                    width="100%"></image>
+        </swiper-item>
+    </block>
+  </swiper>
+  
+  <!-- 热门产品 -->
+  <view class="hot">
+      <view class="hot-title"><text> 新品速递 </text></view>
+      
+      <div class="hot-group">
+        <!-- box info -->
+        <view wx:for="{{boxes}}" 
+              wx:key="boxes" 
+              wx:for-index="boxIndex">
+          <div class="hot-title-logo">
+            <div class="hot-logo">
+              <view class="hot-image-logo">
+                <image src="{{item.image}}"
+                       data-id="{{item.bid}}"  
+                       bindtap="toCategory">
+                </image>
+              </view>
+              <!-- <view class="hot-image-text">
+                <text>{{item.cate}}</text>
+              </view> -->
+            </div>
+          </div>
+
+          <view class="scroll_box"> 
+            <scroll-view class="scroll-view_x" 
+                         scroll-x 
+                         style="width: auto;overflow:hidden;">
+              <!--all products show in here -->
+              <div class="hot-product-container">
+                <view wx:for="{{item.products}}" 
+                      wx:for-item="product" 
+                      wx:key="list" 
+                      wx:key="pid">
+                  
+                  <view class="hot-product" 
+                        
+                        data-id="{{}}">
+                  
+                    <navigator url="details/details?boxid={{item.bid}}&id={{product.pid}}">
+                      <view class="hot-product-image">
+                        <image src="{{product.image}}">
+                        </image>
+                      </view>
+                      <view class="hot-product-price">
+                        <text>${{product.price}}</text>
+                      </view>
+                      <view class="hot-product-text">
+                        <text>{{product.name}}</text>
+                      </view>
+                    </navigator>
+                  </view>
+                  
+                </view>
+              </div>
+            </scroll-view>
+          </view>
+
+          <view class="hot-product-break"></view>
+        </view>
+      </div>      
+    </view>
+
+      
+
+</view>

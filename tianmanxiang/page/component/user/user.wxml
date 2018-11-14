@@ -1,0 +1,85 @@
+<view class="main">
+    <view class="header">
+        <image src="{{thumb}}" class="thumb"></image>
+        <text class="nickname">{{nickname}}</text>
+        <!-- <text class="about">关于我们</text> -->
+    </view>
+
+    <div class="contact-us-container">
+      
+      <div class="contact-us-button-container">
+        <contact-button class='cBtn2' 
+                        type="default-dark" 
+                        size="100" 
+                        session-from="weapp">
+        </contact-button>
+        <contact-button class='cBtn2' 
+                        type="default-dark" 
+                        size="100" 
+                        session-from="weapp">
+        </contact-button>
+      </div>
+
+      <div class="contact-us-button-container">
+        <contact-button class='cBtn3' 
+                        type="default-dark" 
+                        size="100" 
+                        session-from="weapp">
+        </contact-button>
+        <contact-button class='cBtn3' 
+                        type="default-dark" 
+                        size="100" 
+                        session-from="weapp">
+        </contact-button>
+      </div>
+
+      <image class="contact-us" src="../../../image/contact-us.png"></image>
+    </div>
+
+    <view class="address-box">
+        <view class="address-manage">
+            <navigator url="/page/component/address/address">地址管理
+            </navigator>
+        </view>
+        <view wx:if="{{hasAddress}}" 
+              class="address-list">
+            <view>{{address.name}}</view>
+            <view>{{address.phone}}</view>
+            <view>{{address.detail}}</view>
+        </view>
+    </view>
+    <view class="orders-box">
+        <view class="orders">我的订单</view>
+        <view class="orders-list" wx:for="{{orders}}" wx:key="index">
+            <view class="orders-number">订单编号：{{item.order_id}}
+            </view> 
+            <view class="orders-number">购买时间：{{item.dispay_date}}
+            </view>
+            <view class="orders-detail" 
+                  wx:for="{{item.products}}" 
+                  wx:for-item="detail" 
+                  wx:key="list" 
+                  wx:key="id">
+                <navigator url="../details/details?id={{detail._id}}">
+                  <image src="{{detail.image}}"></image>
+                  <view class="">{{detail.title}}</view>
+                  <view class="">x {{detail.num}}</view>
+                </navigator>
+                <!-- <text class="orders-status">{{detail.status}}</text> -->
+            </view>
+            <view class="orders-footer">
+                <text>总价：${{item.total}}</text>
+                <text>     付款状态:  </text>
+                <text class="orders-status-incomplete" wx:if="{{item.status === 1}}">         未付款 </text>
+                <text class="orders-status-complete" wx:if="{{item.status === 0}}">         已付款 </text>
+                <text class="orders-status-processed" wx:if="{{item.status === 2}}">         已处理 </text>
+                 <button size="mini" 
+                         wx:if="{{item.status === 1}}" 
+                         class="orders-btn" 
+                         bindtap="payOrders"
+                         data-order_id="{{item.order_id}}"
+                         data-test="123">付款</button> 
+            </view>
+        </view>
+    </view>
+</view>
