@@ -7,6 +7,7 @@ Page({
     interval: 3000,
     duration: 800,
     boxes:[],
+    
   },
 
 
@@ -98,18 +99,25 @@ Page({
 
     wx.login({
       success: function (res) {
+
+        //console.log(res.code);
+        
+        app.globalData.openid = res.code;
+        console.log(app.globalData.openid);
+        
         if (res.code) {
+
           wx.request({
             header: {
               "Content-Type": "application/json"
             },
-            url: 'https://www.cmapi.ca/rtt_miniprogram/prod/index.php/api/hazelway/v1/userInfo',
+            url: 'https://www.cmapi.ca/cm_miniprogram/dev/public/index.php/api/sboxmanage/v1/userInfo',
             method: 'POST',
             data: {
               code: res.code
             },
             success: function (res) {
-
+              
               if(res.data.ev_has_info) {
                 let address_data = {
                   detail: res.data.ev_user_info.address,

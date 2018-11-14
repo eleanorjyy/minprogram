@@ -15,7 +15,8 @@ App({
     cate: '',
     carts:[],
     totalNum: 0,
-    return_id: 0
+    return_id: 0,
+    openid:'',
   },
   useMD5: function(obj){
     return md5(obj)

@@ -44,11 +44,11 @@
             <image src="/image/cart1.png"  
                    class="goods-cart-img" 
                    bindtap="addToCart" 
-                   data-id="{{goods._id}}" 
-                   data-image="{{goods.image}}" 
+                   data-id="{{box.bid}}" 
+                   data-image="{{box.image}}" 
                    data-num="{{num}}" 
-                   data-price="{{goods.price}}" 
-                   data-title="{{goods.title}}"  
+                   data-price="{{box.price}}" 
+                   data-title="{{box.name}}"  
                    data-selected="true">
             </image> 
 

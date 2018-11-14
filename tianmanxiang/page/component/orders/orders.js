@@ -5,7 +5,8 @@ Page({
     address:{},
     hasAddress: false,
     total:0,
-    orders: []
+    orders: [],
+
   },
 
   toPay() {
@@ -39,17 +40,26 @@ Page({
   onShow:function(){
     const self = this;
     
+    //console.log(app.globalData.openid);
+    // let pList = app.globalData.carts.map(function(a) {return {id: a.id, num: a.num}});
+    // console.log(app.globalData.carts);
+    // let clist = app.globalData.carts;
+    // var pList = [];
     let pList = app.globalData.carts.map(function(a) {return {id: a.id, num: a.num}});
-
+    // for(var i=0;i<clist.length;i++){
+    //   var part = {id:clist[i].id,num:clist[i].num};
+    //   pList.push(part)
+    // }
+    // console.log(pList);
     wx.request({
       header: {
         "Content-Type": "application/json"
       },
       url:
-'https://www.cmapi.ca/rtt_miniprogram/prod/index.php/api/hazelway/v1/beforeOrder',
+'https://www.cmapi.ca/cm_miniprogram/dev/public/index.php/api/sboxmanage/v1/beforeOrder',
       method: 'POST',
       data: {
-        pList: pList
+        pList:pList
       },
       success: function (res) {
 
@@ -61,7 +71,7 @@ Page({
           tax: res.data.tax,
           shipping_fee: res.data.shipping_fee
         });
-        // self.getTotalPrice();
+        self.getTotalPrice();
       },
       fail: function (res) {
 
