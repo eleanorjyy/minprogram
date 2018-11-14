@@ -38,13 +38,19 @@
         <view wx:for="{{boxes}}" 
               wx:key="boxes" 
               wx:for-index="boxIndex">
+          <navigator url="BoxDetail/BoxDetail?boxid={{item.bid}}">
           <div class="hot-title-logo">
             <div class="hot-logo">
               <view class="hot-image-logo">
-                <image src="{{item.image}}"
-                       data-id="{{item.bid}}"  
-                       bindtap="toCategory">
-                </image>
+                <navigator url="BoxDetail/BoxDetail?boxid={{item.bid}}">
+                  <image class="boxImage" src="{{item.image}}"
+                         data-id="{{item.bid}}"  
+                  >
+                  </image>
+                </navigator>
+              </view>
+              <view class="boxName">
+                <text>{{item.name}}</text>
               </view>
               <!-- <view class="hot-image-text">
                 <text>{{item.cate}}</text>
@@ -67,7 +73,7 @@
                         
                         data-id="{{}}">
                   
-                    <navigator url="details/details?boxid={{item.bid}}&id={{product.pid}}">
+                    <!-- <navigator url="details/details?boxid={{item.bid}}&id={{product.pid}}"> -->
                       <view class="hot-product-image">
                         <image src="{{product.image}}">
                         </image>
@@ -78,13 +84,14 @@
                       <view class="hot-product-text">
                         <text>{{product.name}}</text>
                       </view>
-                    </navigator>
+                    <!-- </navigator> -->
                   </view>
                   
                 </view>
               </div>
             </scroll-view>
           </view>
+        </navigator>
 
           <view class="hot-product-break"></view>
         </view>

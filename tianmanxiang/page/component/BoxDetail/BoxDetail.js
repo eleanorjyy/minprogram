@@ -1,10 +1,11 @@
-// page/component/details/details.js
+// page/component/BoxDetail/BoxDetail.js
 const app = getApp()
 Page({
   data:{
-    boxes:[],
-    bid:0,
-    goods: {},
+    
+    
+    box: {},
+    products:[],
     num: 1,
     totalNum: 0,
     hasCarts: false,
@@ -13,7 +14,7 @@ Page({
     scaleCart: false,
     },
     
-    getProductInfo(boxdata,boxid,pid){
+    getBoxInfo(boxdata,boxid){
       //let self = this;
       if(boxdata != []){
 
@@ -21,14 +22,8 @@ Page({
           // console.log(boxdata[i].bid);
           // console.log(boxid);
           if(boxdata[i].bid == boxid){
-            
-            for(var x=0;x<boxdata[i].products.length;x++){
-              if(boxdata[i].products[x].pid == pid){
-                
-                var product = boxdata[i].products[x];
-                return product
-              }
-            }
+            var box = boxdata[i];
+            return box;
           }
         }
       }
@@ -36,7 +31,7 @@ Page({
   
   onLoad: function (option) {
     var self = this;
-    // console.log(option);
+    console.log(option);
     if(app.globalData.totalNum){
       self.setData({
         hasCarts: true
@@ -44,7 +39,7 @@ Page({
     }
     self.setData({
       totalNum: app.globalData.totalNum,
-      bid:option.id,
+      
     })
      
     wx.request({
@@ -55,12 +50,13 @@ Page({
             success(res) {
 
               // console.log(res.data.ea_boxes);
-              var tap_product = self.getProductInfo(res.data.ea_boxes,option.boxid,option.id);
-
-              // console.log(tap_product);
+              var tap_box = self.getBoxInfo(res.data.ea_boxes,option.boxid);
+              var products = tap_box.products;
+              // console.log(tap_box);
               self.setData({
-                boxes:res.data.ea_boxes,
-                goods:tap_product
+                
+                box:tap_box,
+                products:products
 
 
 

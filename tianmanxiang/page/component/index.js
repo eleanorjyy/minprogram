@@ -44,6 +44,13 @@ Page({
     })
   },
 
+  toBoxDetails: function(event){
+
+    wx.redirectTo({
+      url: 'BoxDetail/BoxDetail?id=' + event.currentTarget.dataset.id
+    })
+  },
+
   // toCategory: function(event){
   //   console.log(event);
   //   app.globalData.cate_id = event.currentTarget.dataset.id - 1;
@@ -72,7 +79,7 @@ Page({
             method: "get",
             success(res) {
 
-              console.log(res.data.ea_boxes);
+              // console.log(res.data.ea_boxes);
               self.setData({
                 boxes: res.data.ea_boxes
 

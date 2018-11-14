@@ -1,6 +1,6 @@
 <view class="main">
     <view class="goods-box">
-        <image src="{{goods.image}}" 
+        <image src="{{box.image}}" 
                class="goods-thumb">
         </image>
 
@@ -57,9 +57,41 @@
                src="/image/cart1.png" 
                class="to-carts-icon">
         </image>
-        <view class="goods-stock">库存 {{goods.num}}</view>
-        <view class="goods-title">{{goods.name}}</view>
-        <view class="goods-price">$ {{goods.price}}</view>
+        <view class="goods-stock">库存 {{box.num}}</view>
+        <view class="goods-title">{{box.name}}</view>
+        <view class="goods-price">$ {{box.price}}</view>
+        
     </view>
+    <view class="goods-tab-box">
+          <view class="goods-tab-nav {{curIndex === 0 ?'on':''}}" 
+                bindtap="bindTap" 
+                data-index="0">商品详情</view>
+          <view class="goods-tab-nav {{curIndex === 1 ?'on':''}}" 
+                bindtap="bindTap" 
+                data-index="1">产品参数</view>
+          <!-- <view class="goods-tab-nav {{curIndex === 2 ?'on':''}}" bindtap="bindTap" data-index="2">售后保障</view> -->
+          <view class="goods-content">
+              <view wx:if="{{curIndex === 0}}">
+                <view wx:for="{{products}}" 
+                      wx:for-item="product" 
+                      wx:key="list" 
+                      wx:key="pid">
+                    <view class="product">
+
+                        <image class="product-image" src="{{product.image}}">
+                        </image>
+                        <view class="product-name">
+                          <text >{{product.name}}</text>
+                        </view>
+                    </view>
+                </view>
+              </view>
+              <view wx:if="{{curIndex === 1}}">
+                <text>货品重量 {{box.weight}}</text>
+              </view>
+              <!-- <view wx:if="{{curIndex === 2}}">{{goods.service}}</view> -->
+          </view>
+    </view>
+
     
 </view>

@@ -7,7 +7,9 @@
     "page/component/address/address",
     "page/component/orders/orders",
     "page/component/details/details",
+    "page/component/BoxDetail/BoxDetail",
     "page/component/list/list"
+
   ],
   "window": {
     "navigationBarTextStyle": "#ffffff",

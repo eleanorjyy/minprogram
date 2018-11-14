@@ -48,6 +48,7 @@
             <view>{{address.detail}}</view>
         </view>
     </view>
+    
     <view class="orders-box">
         <view class="orders">我的订单</view>
         <view class="orders-list" wx:for="{{orders}}" wx:key="index">

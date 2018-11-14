@@ -1,6 +1,5 @@
 @import '../../common/common.wxss';
 
-
 .goods-box{
     position: relative;
     padding: 40rpx 45rpx;
@@ -11,8 +10,7 @@
 .goods-box .goods-thumb{
     width: 300rpx;
     height: 300rpx;
-    /*margin: 35rpx 0 125rpx*/
-    margin:auto;
+    margin: 35rpx 0 125rpx;
 }
 
 .to-carts-icon{
@@ -160,7 +158,7 @@
 .goods-price{
     font-size: 40rpx;
 }
-/*.goods-tab-nav{
+.goods-tab-nav{
     display: inline-block;
     width: 33.33%;
     height: 90rpx;
@@ -176,4 +174,27 @@
 }
 .goods-content{
     padding: 40rpx;
-}*/
+}
+
+.product{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding-bottom:10px;
+
+}
+
+.product .product-name{
+    text-align: center;
+
+}
+
+.product .product-image{
+    width: 280rpx !important;
+
+    max-width: 300rpx;
+    max-height:300 rpx;
+    margin:auto;
+    
+}
