@@ -1,7 +1,7 @@
 {
   "pages": [
     "page/component/index",
-    
+    "page/component/painter/painter",
     "page/component/cart/cart",
     "page/component/user/user",
     "page/component/address/address",

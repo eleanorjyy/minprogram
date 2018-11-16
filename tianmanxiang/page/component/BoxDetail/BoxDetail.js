@@ -28,10 +28,42 @@ Page({
         }
       }
   },
+  onShareAppMessage: function (res) {
+    
+    
+    // console.log(res);
+    // console.log(this.data.products);
+    var bid = this.data.box.bid;
+    var image = this.data.box.image;
+    // console.log(bid);
+    var path = '/page/component/BoxDetail/BoxDetail?'+'boxid='+bid;
+    // console.log(path);
+    
+    return {
+
+      title: '甜满箱',
+
+      //desc: boxname,
+      imageUrl:image,
+      path:path,
+      success: function (shareTickets) {
+        console.info(shareTickets + '成功');
+        // 转发成功
+      },
+      fail: function (res) {
+        console.log(res + '失败');
+        // 转发失败
+      },
+      complete:function(res){
+        // 不管成功失败都会执行
+      }
+    }
+    
+  },
   
   onLoad: function (option) {
     var self = this;
-    console.log(option);
+    //console.log(option);
     if(app.globalData.totalNum){
       self.setData({
         hasCarts: true
@@ -51,7 +83,13 @@ Page({
 
               // console.log(res.data.ea_boxes);
               var tap_box = self.getBoxInfo(res.data.ea_boxes,option.boxid);
-              var products = tap_box.products;
+              if(tap_box != []){
+                var products = tap_box.products;
+              }else{
+                var products = [];
+              }
+
+              //self.onShareAppMessage(tap_box);
               // console.log(tap_box);
               self.setData({
                 

@@ -148,6 +148,18 @@ Page({
     });
 
   },
+  onShareAppMessage: function () {
+
+    return {
+
+    title: '甜满箱',
+
+    // desc: '',
+
+    path: '/page/component/index'
+
+    }
+  },
   getCode(){
     let js_code = ""
     var that = this

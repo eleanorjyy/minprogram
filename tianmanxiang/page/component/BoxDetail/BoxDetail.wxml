@@ -3,7 +3,6 @@
         <image src="{{box.image}}" 
                class="goods-thumb">
         </image>
-
         <navigator open-type="switchTab" 
                    url="../cart/cart">
           <view class="carts-icon {{scaleCart?'on':''}}">
@@ -87,6 +86,7 @@
                 </view>
               </view>
               <view wx:if="{{curIndex === 1}}">
+                
                 <text>货品重量 {{box.weight}}</text>
 
               </view>
