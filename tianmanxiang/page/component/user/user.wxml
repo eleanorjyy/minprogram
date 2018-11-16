@@ -52,24 +52,25 @@
     <view class="orders-box">
         <view class="orders">我的订单</view>
         <view class="orders-list" wx:for="{{orders}}" wx:key="index">
-            <view class="orders-number">订单编号：{{item.order_id}}
+            <view class="orders-number">订单编号：{{item.orderId}}
             </view> 
-            <view class="orders-number">购买时间：{{item.dispay_date}}
+            <view class="orders-number">购买时间：{{item.time}}
             </view>
             <view class="orders-detail" 
-                  wx:for="{{item.products}}" 
+                  wx:for="{{item.boxes}}" 
                   wx:for-item="detail" 
                   wx:key="list" 
                   wx:key="id">
-                <navigator url="../details/details?id={{detail._id}}">
+                <navigator url="../BoxDetail/BoxDetail?boxid={{item.bid}}">
                   <image src="{{detail.image}}"></image>
-                  <view class="">{{detail.title}}</view>
+                  <view class="">{{detail.name}}</view>
                   <view class="">x {{detail.num}}</view>
                 </navigator>
                 <!-- <text class="orders-status">{{detail.status}}</text> -->
             </view>
             <view class="orders-footer">
-                <text>总价：${{item.total}}</text>
+              <!-- status=1 已付，status=0未付 -->
+                <text>总价：${{item.totalPrice}}</text>
                 <text>     付款状态:  </text>
                 <text class="orders-status-incomplete" wx:if="{{item.status === 1}}">         未付款 </text>
                 <text class="orders-status-complete" wx:if="{{item.status === 0}}">         已付款 </text>

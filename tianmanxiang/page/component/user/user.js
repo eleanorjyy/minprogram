@@ -5,10 +5,31 @@ Page({
     name:'',
     orders:[],
     hasAddress:false,
-    address:{}
+    address:{},
+    
+  },
+  
+  getOrder(orders){
+    let self = this;
+    //console.log(orders);
+    var orderInfo = [];
+    
+    
+    if(orders != []){
+      for(var i=0;i<orders.length;i++){
+        var each = {"orderId":orders[i].oid,"totalPrice":orders[i].price,
+              "time":orders[i].time,"status":orders[i].status,
+              "boxes":orders[i].boxes};
+        //console.log(each);
+        orderInfo.push(each);
+      }
+    }
+    console.log(orderInfo);
+    return orderInfo;
   },
   onLoad(){
     var self = this;
+    
     /**
      * 获取用户信息
      */
@@ -32,14 +53,17 @@ Page({
                 "Content-Type": "application/json"
               },
               url: 
-'https://www.cmapi.ca/rtt_miniprogram/prod/index.php/api/hazelway/v1/orderHistory',
+'https://www.cmapi.ca/cm_miniprogram/dev/public/index.php/api/sboxmanage/v1/orderHistory',
               method: 'POST',
               data: {
                 code: res.code
               },
               success: function (res) {
+                //console.log(res.data.orders);
+                var orders = self.getOrder(res.data.orders);
+                //console.log(orders);
                 self.setData({
-                  orders: res.data.ev_orders
+                  orders: orders
                 })
 
                 
